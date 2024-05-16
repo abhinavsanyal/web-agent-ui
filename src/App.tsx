@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
   return (
     <div className="flex h-screen ">
-      <div className={`relative flex flex-col ${isExpanded ? "w-1/3" : "w-20"} border-r border-gray-300 pr-8 p-4 resize-x overflow-hidden transition-width duration-300`}>
+      <div className={`relative flex flex-col ${isExpanded ? "w-1/4" : "w-20"} border-r border-gray-300 pr-8 p-5 pb-12 resize-x overflow-hidden transition-width duration-300`}>
         {isExpanded && (
           <>
             <CommandList onSelectPrompt={handleSelectPrompt} />
