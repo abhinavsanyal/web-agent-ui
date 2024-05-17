@@ -6,7 +6,7 @@ const RightContainer: React.FC<{ showIframe: boolean }> = ({ showIframe }) => {
     <div className="flex-1 p-10 flex flex-col justify-center items-center bg-gray-100 text-center">
       {showIframe ? (
         // eslint-disable-next-line jsx-a11y/iframe-has-title
-        <iframe src="http://18.144.171.73:6080/vnc_auto.html" className="w-full h-full"></iframe>
+        <iframe src="https://b-ot.ai/vnc/vnc_auto.html" className="w-full h-full"></iframe>
       ) : (
         <>
           <div className="flex flex-col items-center mb-4">
