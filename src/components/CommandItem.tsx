@@ -11,7 +11,9 @@ interface CommandItemProps {
 
 const CommandItem: React.FC<CommandItemProps> = ({ icon: Icon, text, subtext, prompt, onSelectPrompt }) => {
   return (
-    <div className="flex items-center p-3 pt-5 pb-5 mb-3 bg-gray-100 rounded-xl shadow-sm cursor-pointer" onClick={() => onSelectPrompt(prompt)}>
+    <div className="flex items-center p-3 pt-5 pb-5 mb-3 bg-gray-100 rounded-xl shadow-sm cursor-pointer 
+                  hover:bg-gray-200 hover:shadow-md transition duration-150 ease-in-out"
+         onClick={() => onSelectPrompt(prompt)}>
         <Icon className="text-gray-600 flex-shrink-0 text-3xl mr-4" />
         <div className="flex flex-col">
             <span className="text-md font-semibold">{text}</span>
