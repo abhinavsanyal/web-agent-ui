@@ -4,9 +4,9 @@ import { IoPlayOutline } from "react-icons/io5";
 const RightContainer: React.FC<{ showIframe: boolean }> = ({ showIframe }) => {
   return (
     <div className="flex-1 p-10 flex flex-col justify-center items-center bg-gray-100 text-center">
-      {showIframe ? (
+      {true ? (
         // eslint-disable-next-line jsx-a11y/iframe-has-title
-        <iframe src="https://b-ot.ai/vnc/vnc.html" className="w-full h-full"></iframe>
+        <iframe src="https://b-ot.ai/vnc/vnc.html" className="w-full h-full rounded-xl"></iframe>
       ) : (
         <>
           <div className="flex flex-col items-center mb-4">
