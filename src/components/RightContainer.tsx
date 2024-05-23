@@ -7,7 +7,7 @@ const RightContainer: React.FC<{ showIframe: boolean, summary: string, showModal
   return (
     <div className="flex-1 p-10 flex flex-col justify-center items-center bg-gray-100 text-center">
       {showIframe ? (
-        <iframe src="http://localhost:6080/vnc_auto.html" className="w-full h-full rounded-xl"></iframe>
+        <iframe src="https://b-ot.ai/vnc/vnc.html" className="w-full h-full rounded-xl"></iframe>
       ) : (
         <>
           <div className="flex flex-col items-center mb-4">
