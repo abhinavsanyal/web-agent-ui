@@ -1,4 +1,3 @@
-// CommandInput.tsx
 import React, { useEffect, useRef, useState } from "react";
 import { FaMicrophone, FaArrowUp, FaStop } from "react-icons/fa";
 import { postCommand } from "../api";
@@ -6,7 +5,7 @@ import { postCommand } from "../api";
 const CommandInput: React.FC<{
   input: string;
   onInputChange: (input: string) => void;
-  onToggleIframe: (toggle: boolean, summary?: string) => void;
+  onToggleIframe: (toggle: boolean) => void;
 }> = ({ input, onInputChange, onToggleIframe }) => {
   const [isLoading, setIsLoading] = useState(false);
   const abortController = useRef(new AbortController());
@@ -17,21 +16,17 @@ const CommandInput: React.FC<{
       setIsLoading(true);
       onToggleIframe(true);
       try {
-        const response = await postCommand(
-          input,
-          abortController.current.signal
-        );
-        setIsLoading(false);
-        if (response) {
-          console.log("Response:", response.response.summary);
-          onToggleIframe(false, response.response.summary); // Pass the summary when toggling the iframe off
-          onInputChange(""); // Clear input after command
-        }
+        await postCommand(input, abortController.current.signal);
       } catch (error) {
-        console.error("Error:", error);
-        setIsLoading(false);
-        onToggleIframe(false);
+        if (error instanceof Error) {
+          console.error("Error:", error.message);
+        } else {
+          console.error("An unexpected error occurred:", error);
+        }
       }
+      setIsLoading(false);
+      onToggleIframe(false);
+      onInputChange(""); // Clear input after command
     }
   };
 
@@ -61,13 +56,15 @@ const CommandInput: React.FC<{
     onToggleIframe(false);
   };
 
+  // Adjust the height of the textarea based on its content
   const adjustHeight = () => {
     if (textareaRef.current) {
-      textareaRef.current.style.height = "auto";
+      textareaRef.current.style.height = "auto"; 
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   };
 
+  // Adjust height whenever the input changes
   useEffect(() => {
     adjustHeight();
   }, [input]);

@@ -1,12 +1,13 @@
-import React from 'react';
-import { IoPlayOutline } from "react-icons/io5";
 
-const RightContainer: React.FC<{ showIframe: boolean }> = ({ showIframe }) => {
+import React, { useState } from 'react';
+import { IoPlayOutline } from "react-icons/io5";
+import Modal from './Modal'; // Import your Modal component
+
+const RightContainer: React.FC<{ showIframe: boolean, summary: string, showModal: boolean, onCloseModal: () => void }> = ({ showIframe, summary, showModal, onCloseModal }) => {
   return (
     <div className="flex-1 p-10 flex flex-col justify-center items-center bg-gray-100 text-center">
       {showIframe ? (
-        // eslint-disable-next-line jsx-a11y/iframe-has-title
-        <iframe src="https://b-ot.ai/vnc/vnc.html" className="w-full h-full rounded-xl"></iframe>
+        <iframe src="http://localhost:6080/vnc_auto.html" className="w-full h-full rounded-xl"></iframe>
       ) : (
         <>
           <div className="flex flex-col items-center mb-4">
@@ -23,9 +24,13 @@ const RightContainer: React.FC<{ showIframe: boolean }> = ({ showIframe }) => {
           </div>
         </>
       )}
+      {showModal && <Modal content={summary} onClose={onCloseModal} />}
     </div>
   );
 };
+
+export default RightContainer;
+
 
 const CustomListItem: React.FC<{ index: number; text: string }> = ({ index, text }) => {
   return (
@@ -35,5 +40,3 @@ const CustomListItem: React.FC<{ index: number; text: string }> = ({ index, text
     </div>
   );
 };
-
-export default RightContainer;
